@@ -40,9 +40,12 @@ include_once 'includes/message.php';
                         <td><?php echo $dados['idade']; ?></td>
                         
                         <!-- botão editar -->
-                        <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a></td>
+                        <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange">
+                        <i class="material-icons">edit</i></a></td>
+                        
                         <!-- botão deletar -->
-                        <td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
+                        <td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger">
+                        <i class="material-icons">delete</i></a></td>
 
                         <!-- Modal Structure | mensagem para perguntar se usuário tem certeza da ação -->
                         <div id="modal<?php echo $dados['id']; ?>" class="modal">
@@ -54,7 +57,7 @@ include_once 'includes/message.php';
                                 <form action="php_action/delete.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
                                     <button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
-                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                 </form>
                             </div>
                         </div>
