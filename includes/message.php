@@ -3,7 +3,8 @@
 session_start();
 if(isset($_SESSION['mensagem'])): ?>
 
-<!-- Mensagem com animação do materilizecss pra dizer se foi cadastrado com sucesso -->
+<!-- Mensagem com animação do materilizecss pra informar situação 
+ao usuário ao final de um comando dado por ele -->
 <script>
     window.onload = function(){
         M.toast({html: '<?php echo $_SESSION['mensagem']; ?>'})

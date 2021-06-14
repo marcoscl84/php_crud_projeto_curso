@@ -12,7 +12,7 @@ include_once 'includes/message.php';
 ?>
 
 <div class="row">
-    <div class="col s12 m6 push-m3">
+    <div class="col s12 m8 push-m2">
         <h3 class="light"> Clientes </h3>
         <table class="stripped">
             <thead>
@@ -31,37 +31,37 @@ include_once 'includes/message.php';
 
                 if(mysqli_num_rows($resultado) > 0):
 
-                while($dados = mysqli_fetch_array($resultado)):
+                    while($dados = mysqli_fetch_array($resultado)):
             ?>
-                <tr>
-                    <td><?php echo $dados['nome']; ?><td>
-                    <td><?php echo $dados['sobrenome']; ?><td>
-                    <td><?php echo $dados['email']; ?><td>
-                    <td><?php echo $dados['idade']; ?><td>
-                    
-                    <!-- botão editar -->
-                    <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a><td>
-                    <!-- botão deletar -->
-                    <td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a><td>
+                    <tr>
+                        <td><?php echo $dados['nome']; ?></td>
+                        <td><?php echo $dados['sobrenome']; ?></td>
+                        <td><?php echo $dados['email']; ?></td>
+                        <td><?php echo $dados['idade']; ?></td>
+                        
+                        <!-- botão editar -->
+                        <td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a></td>
+                        <!-- botão deletar -->
+                        <td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 
-                    <!-- Modal Structure -->
-                    <div id="modal1<?php echo $dados['id']; ?>" class="modal">
-                        <div class="modal-content">
-                            <h4>Opa</h4>
-                            <p>Tem certeza que deseja excluir o cliente?</p>
+                        <!-- Modal Structure | mensagem para perguntar se usuário tem certeza da ação -->
+                        <div id="modal<?php echo $dados['id']; ?>" class="modal">
+                            <div class="modal-content">
+                                <h4>Atenção!</h4>
+                                <p>Tem certeza que deseja excluir o cliente?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="php_action/delete.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
+                                    <button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                                </form>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <form action="php_action/delete.php" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
-                                <button type="submit" name="btn-deletar" class="btn-red">Sim, quero deletar</button>
-                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                            </form>
-                        </div>
-                    </div>
 
-                </tr>
+                    </tr>
             <?php 
-                endwhile; 
+                    endwhile; 
                 else:
             ?>
 
